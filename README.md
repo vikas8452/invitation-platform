@@ -1,261 +1,154 @@
-# 🎉 InviteFlow - Digital Invitation Platform
+# InviteFlow - Digital Invitation Platform
 
-A full-stack responsive web application where users can create, customize, purchase, and host digital invitations with a beautiful and elegant UI/UX.
+A modern, full-featured platform for creating, customizing, hosting, and sharing digital invitations.
 
-## ✨ Features
+## 🚀 Features
 
-### ✅ Implemented
-
-1. **Landing Page**
-   - Hero section with Framer Motion animations
-   - Showcase sections for different event categories
-   - "How it Works" section (3-step process)
-   - Testimonials and pricing cards
-   - Fully responsive design with Tailwind CSS + Shadcn UI
-
-2. **Template Gallery**
-   - 18+ templates across 6 categories
-   - Advanced filtering (category, price, search)
-   - Template preview with detailed view
-   - Add to cart functionality
-   - Real-time search
-
-3. **Customization Page**
-   - Real-time preview updates
-   - Dynamic form fields (name, date, venue, RSVP, etc.)
-   - Color picker with presets
-   - Font selector
-   - Background customization
-   - Auto-save to localStorage
-
-4. **Shopping Cart & Checkout**
-   - Full cart management (add, remove, update)
-   - Order summary
-   - Checkout form with validation
-   - State management with Zustand
-   - Persistent cart storage
-
-5. **Authentication**
-   - Clerk authentication integration
-   - Sign in/up pages
-   - User profile dropdown
-   - Protected routes
-
-6. **User Dashboard**
-   - Overview with statistics
-   - My Invitations management
-   - Order history
-   - Quick actions
-
-7. **Hosted Invitation Pages**
-   - Unique URLs for each invitation (`/invite/[slug]`)
-   - Customizable design based on user preferences
-   - RSVP form functionality
-   - Share and download options
-   - View tracking
-
-8. **Database Ready**
-   - Prisma ORM setup
-   - Complete schema for all features
-   - PostgreSQL support
+- **Template Gallery** - 18+ professionally designed templates
+- **Real-time Customization** - Live preview with colors, fonts, and images
+- **Hosted Invitations** - Unique URLs for each invitation
+- **Download Options** - PNG and PDF downloads
+- **Countdown Timer** - Real-time event countdown
+- **RSVP Functionality** - Guest response tracking
+- **Payment Integration** - Stripe checkout (ready for production)
+- **Responsive Design** - Works on all devices
+- **Beautiful Animations** - Framer Motion powered
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Next.js 16** (App Router)
-- **TypeScript**
-- **Tailwind CSS** + **Shadcn UI**
-- **Framer Motion** (animations)
-- **Zustand** (state management)
-- **React Hook Form** + **Zod** (validation)
-
-### Backend
-- **Next.js API Routes**
-- **Prisma ORM**
-- **PostgreSQL** (database)
-- **Clerk** (authentication)
-- **Stripe** (payments - ready)
-
-### Additional
-- **Lucide React** (icons)
-- **Sonner** (toast notifications)
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI
+- **Animations**: Framer Motion
+- **State Management**: Zustand
+- **Authentication**: Clerk
+- **Database**: PostgreSQL with Prisma ORM
+- **Payment**: Stripe
+- **Export**: html2canvas + jsPDF
 
 ## 📦 Installation
 
-1. **Clone the repository**
+1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/yourusername/invitation-platform.git
 cd invitation-platform
 ```
 
-2. **Install dependencies**
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. **Set up environment variables**
-
-Create a `.env` file in the root directory:
-
-```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/inviteflow?schema=public"
-
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-CLERK_SECRET_KEY=your_clerk_secret_key
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/templates
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/templates
-
-# Stripe (Optional)
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
-
-# App
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-4. **Set up database**
+3. Set up environment variables:
 ```bash
-# Generate Prisma client
-npx prisma generate
-
-# Run migrations (when you have a database)
-npx prisma db push
+cp .env.example .env
 ```
 
-5. **Run the development server**
+Fill in your environment variables:
+```env
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
+CLERK_SECRET_KEY=your_clerk_secret
+
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/invitation_platform"
+
+# Stripe
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_key
+STRIPE_SECRET_KEY=your_stripe_secret
+```
+
+4. Run database migrations:
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📁 Project Structure
+## 🌐 Deployment to GitHub Pages
 
-```
-invitation-platform/
-├── src/
-│   ├── app/
-│   │   ├── (auth)/          # Authentication pages
-│   │   ├── cart/            # Shopping cart
-│   │   ├── customize/       # Template customization
-│   │   ├── dashboard/       # User dashboard
-│   │   ├── invite/          # Hosted invitation pages
-│   │   ├── templates/       # Template gallery
-│   │   ├── layout.tsx       # Root layout
-│   │   └── page.tsx         # Landing page
-│   ├── components/
-│   │   ├── ui/              # Shadcn UI components
-│   │   └── Navigation.tsx   # Shared navigation
-│   └── lib/
-│       ├── stores/          # Zustand stores
-│       ├── mock-data.ts     # Mock template data
-│       ├── types.ts         # TypeScript types
-│       ├── utils.ts         # Utility functions
-│       └── prisma.ts        # Prisma client
-├── prisma/
-│   └── schema.prisma        # Database schema
-└── public/                  # Static assets
+1. Push your code to GitHub:
+```bash
+git push origin main
 ```
 
-## 🚀 Features to Add (Phase 2)
+2. Enable GitHub Pages in your repository settings:
+   - Go to Settings → Pages
+   - Select "GitHub Actions" as source
+   - The workflow will automatically build and deploy
 
-1. **Stripe Integration**
-   - Complete payment processing
-   - Webhooks for order confirmation
-   - Invoice generation
+3. Your site will be available at:
+   `https://yourusername.github.io/invitation-platform`
 
-2. **Admin Dashboard**
-   - Template management (CRUD)
-   - User management
-   - Order analytics
-   - Revenue tracking
+## 📱 Usage
 
-3. **Video Templates**
-   - Video invitation support
-   - FFmpeg integration for rendering
-   - Video customization
+### Creating an Invitation
 
-4. **Enhanced Features**
-   - Guest list management
-   - RSVP tracking dashboard
-   - Email notifications (Nodemailer)
-   - WhatsApp integration
-   - Custom domain support
-   - AI-powered message suggestions
-   - Referral program
-   - Discount codes
+1. Browse templates from the gallery
+2. Click "Customize" on any template
+3. Fill in event details (name, date, venue, etc.)
+4. Customize colors, fonts, and upload background images
+5. Preview changes in real-time
+6. Download or host your invitation
 
-5. **Media Management**
-   - AWS S3 / Cloudinary integration
-   - Image uploads
-   - Background image library
+### Hosting an Invitation
 
-## 🎨 UI/UX Features
+1. Click "Share" → "Host Public Page"
+2. Get a unique URL for your invitation
+3. Share the link with guests
+4. Guests can RSVP directly on the page
 
-- ✅ Soft pastel color palette
-- ✅ Elegant typography (Playfair Display + Inter)
-- ✅ Framer Motion animations
-- ✅ Micro-interactions
-- ✅ Responsive design (mobile-first)
-- ✅ Accessibility considerations
+### Download Options
 
-## 🧪 Testing
+1. **Image (PNG)** - High-quality PNG image download
+2. **PDF** - Professional PDF document
+
+## 🎨 Customization
+
+- **Templates**: Add new templates in `src/lib/mock-data.ts`
+- **Components**: UI components in `src/components/ui/`
+- **Styling**: Tailwind classes throughout the application
+- **Animations**: Framer Motion configurations
+
+## 🔧 Development
 
 ```bash
-# Run tests (when implemented)
-npm test
+# Install dependencies
+npm install
 
-# Run linter
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Run linting
 npm run lint
 ```
 
-## 📝 API Routes (To Implement)
-
-- `POST /api/orders` - Create order
-- `GET /api/orders` - Get user orders
-- `POST /api/invitations` - Create hosted invitation
-- `GET /api/invitations/:slug` - Get invitation details
-- `POST /api/rsvp` - Submit RSVP
-- `POST /api/webhooks/stripe` - Handle Stripe webhooks
-- `POST /api/webhooks/clerk` - Handle Clerk webhooks
-
-## 🔐 Environment Setup
-
-### Clerk Setup
-1. Go to [clerk.com](https://clerk.com)
-2. Create a new application
-3. Copy your API keys to `.env`
-
-### Database Setup
-1. Install PostgreSQL locally or use a cloud provider
-2. Update `DATABASE_URL` in `.env`
-3. Run `npx prisma db push`
-
-### Stripe Setup (Optional)
-1. Go to [stripe.com](https://stripe.com)
-2. Get your API keys
-3. Add to `.env`
-
-## 📧 Contact & Support
-
-For questions or support, please open an issue in the repository.
-
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT License - feel free to use this project for your own purposes.
 
 ## 🙏 Acknowledgments
 
-- Shadcn UI for the beautiful component library
-- Clerk for authentication
-- Vercel for hosting
-- The Next.js team
+- Built with Next.js, Tailwind CSS, and Shadcn UI
+- Inspired by modern invitation platforms
+- Thanks to the open-source community
+
+## 📞 Support
+
+For issues, questions, or contributions, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
+Made with ❤️ by Vikas Patel
