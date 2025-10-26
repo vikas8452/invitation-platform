@@ -194,6 +194,11 @@ export default function CustomizePage() {
   };
 
   const handleHostInvitation = () => {
+    if (!template) {
+      toast.error('Template not found');
+      return;
+    }
+    
     const slug = generateInvitationSlug(
       customization.eventName || 'event',
       customization.hostName || 'host'
